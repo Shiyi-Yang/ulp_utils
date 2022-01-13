@@ -4,7 +4,7 @@ def conv(spec,delta,area):
     image_arr = []
     for row in range(spec.shape[0]):
         #spec[delta[i]]
-        spec[max(row-psf_my,0):min(spec.shape[0],row+psf.shape[0]-psf_my)] += psf[max(psf_my-row,0):min(psf.shape[0],psf_my+spec.shape[0]-row),
+        spec[max(row-psf_my,0):min(spec.shape[0],row+psf.shape[0]-psf_my)] += area[row] * psf[max(psf_my-row,0):min(psf.shape[0],psf_my+spec.shape[0]-row),
                                                                                   psf_mx - delta[row]:psf_mx + spec.shape[1]-delta[row]] 
         if (row % 20 == 0):
             fig, ax = plt.subplots(figsize=(10,5))
